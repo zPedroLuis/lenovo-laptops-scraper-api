@@ -1,14 +1,20 @@
 {
   "name": "lenovo-laptops-scraper-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "A web scraper API to fetch Lenovo laptops data and serve it via a RESTful API.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "web scraper",
+    "Lenovo",
+    "laptops",
+    "REST API"
+  ],
+  "author": "zPedroLuis",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.7",
