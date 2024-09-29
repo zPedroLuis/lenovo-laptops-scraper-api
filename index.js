@@ -24,6 +24,7 @@ app.get('/laptops', async (req, res) => {
                 const reviews = $(element).find('.ratings .review-count').text();
                 const stars = $(element).find('.ratings .ws-icon-star').length;
                 const image = $(element).find('img').attr('src');
+                const productUrl = 'https://webscraper.io' + $(element).find('.title').attr('href');
 
                 laptopsOnPage.push({
                     title,
@@ -31,12 +32,13 @@ app.get('/laptops', async (req, res) => {
                     description,
                     reviews,
                     stars,
-                    image
+                    image,
+                    productUrl
                 });
             });
 
             if (laptopsOnPage.length === 0) {
-                hasNextPage = false; // Quando não há mais produtos
+                hasNextPage = false;
             } else {
                 laptops = laptops.concat(laptopsOnPage);
                 page++;
@@ -51,7 +53,6 @@ app.get('/laptops', async (req, res) => {
         res.status(500).send('Erro ao acessar os dados');
     }
 });
-
 
 
 app.listen(PORT, () => {
