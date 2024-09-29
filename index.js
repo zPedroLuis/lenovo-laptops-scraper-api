@@ -17,14 +17,16 @@ app.get('/laptops', async (req, res) => {
             const price = $(element).find('.price').text().replace('$', '');
             const description = $(element).find('.description').text();
             const reviews = $(element).find('.ratings .review-count').text();
-
+            const stars = $(element).find('.ratings .ws-icon-star').length;
+            const image = $(element).find('img').attr('src');
 
             laptops.push({
                 title,
                 price: parseFloat(price),
                 description,
                 reviews,
-
+                stars,
+                image
             });
         });
 
