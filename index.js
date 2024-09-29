@@ -6,29 +6,42 @@ const PORT = 3000;
 
 app.get('/laptops', async (req, res) => {
     try {
-        const response = await axios.get('https://webscraper.io/test-sites/e-commerce/static/computers/laptops');
-        const html = response.data;
-        const $ = cheerio.load(html);
-
+        let page = 1;
         let laptops = [];
+        let hasNextPage = true;
 
-        $('.thumbnail').each((index, element) => {
-            const title = $(element).find('.title').text();
-            const price = $(element).find('.price').text().replace('$', '');
-            const description = $(element).find('.description').text();
-            const reviews = $(element).find('.ratings .review-count').text();
-            const stars = $(element).find('.ratings .ws-icon-star').length;
-            const image = $(element).find('img').attr('src');
+        while (hasNextPage) {
+            const response = await axios.get(`https://webscraper.io/test-sites/e-commerce/static/computers/laptops?page=${page}`);
+            const html = response.data;
+            const $ = cheerio.load(html);
 
-            laptops.push({
-                title,
-                price: parseFloat(price),
-                description,
-                reviews,
-                stars,
-                image
+            let laptopsOnPage = [];
+
+            $('.thumbnail').each((index, element) => {
+                const title = $(element).find('.title').text();
+                const price = $(element).find('.price').text().replace('$', '');
+                const description = $(element).find('.description').text();
+                const reviews = $(element).find('.ratings .review-count').text();
+                const stars = $(element).find('.ratings .ws-icon-star').length;
+                const image = $(element).find('img').attr('src');
+
+                laptopsOnPage.push({
+                    title,
+                    price: parseFloat(price),
+                    description,
+                    reviews,
+                    stars,
+                    image
+                });
             });
-        });
+
+            if (laptopsOnPage.length === 0) {
+                hasNextPage = false; // Quando não há mais produtos
+            } else {
+                laptops = laptops.concat(laptopsOnPage);
+                page++;
+            }
+        }
 
         laptops.sort((a, b) => a.price - b.price);
 
