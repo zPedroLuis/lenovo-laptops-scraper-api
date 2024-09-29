@@ -45,7 +45,9 @@ This project is a web scraper built using Node.js, Axios, Cheerio, and Express t
 
 ## Technologies Used
 
-- ![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat&logo=node.js&logoColor=white)
-- ![Axios](https://img.shields.io/badge/-Axios-5A29E4?style=flat&logo=axios&logoColor=white)
-- ![Cheerio](https://img.shields.io/badge/-Cheerio-333333?style=flat)
-- ![Express](https://img.shields.io/badge/-Express-000000?style=flat&logo=express&logoColor=white)
+- [![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat&logo=node.js&logoColor=white)](https://nodejs.org)
+- [![Axios](https://img.shields.io/badge/-Axios-5A29E4?style=flat&logo=axios&logoColor=white)](https://axios-http.com)
+- [![Cheerio](https://img.shields.io/badge/-Cheerio-333333?style=flat)](https://cheerio.js.org)
+- [![Express](https://img.shields.io/badge/-Express-000000?style=flat&logo=express&logoColor=white)](https://expressjs.com)
+
